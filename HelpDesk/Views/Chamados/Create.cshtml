@@ -1,0 +1,58 @@
+﻿@model HelpDesk.Models.Chamado
+
+@{
+    ViewData["Title"] = "Criar Chamado";
+}
+
+<h1>Criar Chamado</h1>
+
+<h4>Novo Chamado</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Título -->
+            <div class="form-group mb-3">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" placeholder="Digite o título do chamado" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+
+            <!-- Descrição -->
+            <div class="form-group mb-3">
+                <label asp-for="Descricao" class="control-label"></label>
+                <textarea asp-for="Descricao" class="form-control" rows="4" placeholder="Descreva o problema"></textarea>
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+
+            <!-- Status -->
+            <div class="form-group mb-3">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control">
+                    <option value="Aberto">Aberto</option>
+                    <option value="Em andamento">Em andamento</option>
+                    <option value="Finalizado">Finalizado</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <!-- Botão -->
+            <div class="form-group">
+                <input type="submit" value="Criar Chamado" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+}
